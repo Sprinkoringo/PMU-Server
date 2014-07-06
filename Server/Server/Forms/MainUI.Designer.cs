@@ -69,6 +69,7 @@
             this.txtCommandOutput.Size = new System.Drawing.Size(503, 186);
             this.txtCommandOutput.TabIndex = 2;
             this.txtCommandOutput.Text = "PMU Server Command Prompt\r\nServer> ";
+            this.txtCommandOutput.TextChanged += new System.EventHandler(this.txtCommandOutput_TextChanged);
             // 
             // txtCommand
             // 

@@ -62,6 +62,7 @@
             this.ShowIcon = false;
             this.Text = "LoadingUI";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoadingUI_FormClosing);
+            this.Load += new System.EventHandler(this.LoadingUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
