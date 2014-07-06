@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0E3F328A-88DD-46B0-8B3B-99878EFE0BEC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Script</RootNamespace>
+    <AssemblyName>Script</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Data\Scripts\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Build\DataManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMU.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Build\PMU.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMU.DatabaseConnector, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Build\PMU.DatabaseConnector.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PMU.Sockets, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Build\PMU.Sockets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Auction.cs" />
+    <Compile Include="BattleScript.cs" />
+    <Compile Include="BossBattles.cs" />
+    <Compile Include="ChatMessageWatcher.cs" />
+    <Compile Include="Commands.cs" />
+    <Compile Include="CTF.cs" />
+    <Compile Include="DatabaseManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Debug.cs" />
+    <Compile Include="DungeonRules.cs" />
+    <Compile Include="ElectrostasisTower.cs" />
+    <Compile Include="exPlayer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Globals.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Lottery.cs" />
+    <Compile Include="Main.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MapInteractions.cs" />
+    <Compile Include="PitchBlackAbyss.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomIce.cs" />
+    <Compile Include="ScriptedTiles.cs" />
+    <Compile Include="SnowballGame.cs" />
+    <Compile Include="StatusScript.cs" />
+    <Compile Include="StoryConstruction.cs" />
+    <Compile Include="StoryHelper.cs" />
+    <Compile Include="Test.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{0F397789-1719-47E8-B83E-45B721981B73}</Project>
+      <Name>Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Exceptions\Exceptions.csproj">
+      <Project>{7F001974-C37D-46F0-A2B3-73C9B79C4DC1}</Project>
+      <Name>Exceptions</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{6D9BB0A3-AFC1-402B-A596-E2FA03C6C4B5}</Project>
+      <Name>IO</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\RDungeons\RDungeons.csproj">
+      <Project>{B27512C4-9D86-4E3B-ADC0-E00A43193C22}</Project>
+      <Name>RDungeons</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Scripting\Scripting.csproj">
+      <Project>{D40E045A-02AB-4065-99A7-5F5EF85031D2}</Project>
+      <Name>Scripting</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Server\Server.csproj">
+      <Project>{7368E9DA-0CDC-4E60-88E6-C0DA164F14EB}</Project>
+      <Name>Server</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)Auction.cs" "$(SolutionDir)..\Data\Scripts\Auction.cs"
+copy "$(ProjectDir)BattleScript.cs" "$(SolutionDir)..\Data\Scripts\BattleScript.cs"
+copy "$(ProjectDir)BossBattles.cs" "$(SolutionDir)..\Data\Scripts\BossBattles.cs"
+copy "$(ProjectDir)ChatMessageWatcher.cs" "$(SolutionDir)..\Data\Scripts\ChatMessageWatcher.cs"
+copy "$(ProjectDir)Commands.cs" "$(SolutionDir)..\Data\Scripts\Commands.cs"
+copy "$(ProjectDir)CTF.cs" "$(SolutionDir)..\Data\Scripts\CTF.cs"
+copy "$(ProjectDir)DatabaseManager.cs" "$(SolutionDir)..\Data\Scripts\DatabaseManager.cs"
+copy "$(ProjectDir)Debug.cs" "$(SolutionDir)..\Data\Scripts\Debug.cs"
+copy "$(ProjectDir)DungeonRules.cs" "$(SolutionDir)..\Data\Scripts\DungeonRules.cs"
+copy "$(ProjectDir)ElectrostasisTower.cs" "$(SolutionDir)..\Data\Scripts\ElectrostasisTower.cs"
+copy "$(ProjectDir)exPlayer.cs" "$(SolutionDir)..\Data\Scripts\exPlayer.cs"
+copy "$(ProjectDir)Globals.cs" "$(SolutionDir)..\Data\Scripts\Globals.cs"
+copy "$(ProjectDir)Lottery.cs" "$(SolutionDir)..\Data\Scripts\Lottery.cs"
+copy "$(ProjectDir)Main.cs" "$(SolutionDir)..\Data\Scripts\Main.cs"
+copy "$(ProjectDir)MapInteractions.cs" "$(SolutionDir)..\Data\Scripts\MapInteractions.cs"
+copy "$(ProjectDir)PitchBlackAbyss.cs" "$(SolutionDir)..\Data\Scripts\PitchBlackAbyss.cs"
+copy "$(ProjectDir)RandomIce.cs" "$(SolutionDir)..\Data\Scripts\RandomIce.cs"
+copy "$(ProjectDir)ScriptedTiles.cs" "$(SolutionDir)..\Data\Scripts\ScriptedTiles.cs"
+copy "$(ProjectDir)SnowballGame.cs" "$(SolutionDir)..\Data\Scripts\SnowballGame.cs"
+copy "$(ProjectDir)StatusScript.cs" "$(SolutionDir)..\Data\Scripts\StatusScript.cs"
+copy "$(ProjectDir)StoryConstruction.cs" "$(SolutionDir)..\Data\Scripts\StoryConstruction.cs"
+copy "$(ProjectDir)StoryHelper.cs" "$(SolutionDir)..\Data\Scripts\StoryHelper.cs"
+copy "$(ProjectDir)Test.cs" "$(SolutionDir)..\Data\Scripts\Test.cs"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

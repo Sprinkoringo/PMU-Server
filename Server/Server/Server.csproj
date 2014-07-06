@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7368E9DA-0CDC-4E60-88E6-C0DA164F14EB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Server</RootNamespace>
+    <AssemblyName>Server</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\..\Build\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\..\Build\</OutputPath>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Server.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataManager">
+      <HintPath>..\..\DataManager\build\DataManager.dll</HintPath>
+    </Reference>
+    <Reference Include="PMU.Compression">
+      <HintPath>..\..\..\framework\compression\build\PMU.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="PMU.Core">
+      <HintPath>..\..\..\framework\core\build\PMU.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PMU.DatabaseConnector">
+      <HintPath>..\..\..\framework\DatabaseConnecter\build\PMU.DatabaseConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="PMU.Sockets">
+      <HintPath>..\..\..\framework\sockets\build\PMU.Sockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AI\AIProcessor.cs" />
+    <Compile Include="AI\MapAIProcessingTask.cs" />
+    <Compile Include="AI\MapGC.cs" />
+    <Compile Include="Algorithms\Pathfinder\AStarPathfinder.cs" />
+    <Compile Include="Algorithms\Pathfinder\IPathfinder.cs" />
+    <Compile Include="Algorithms\Pathfinder\PathfinderResult.cs" />
+    <Compile Include="Algorithms\Pathfinder\PathfinderSquare.cs" />
+    <Compile Include="Bans.cs" />
+    <Compile Include="Combat\BattleMessage.cs" />
+    <Compile Include="Combat\ExtraStatus.cs" />
+    <Compile Include="Combat\ExtraStatusCollection.cs" />
+    <Compile Include="Combat\PokemonData.cs" />
+    <Compile Include="Combat\TargetCollection.cs" />
+    <Compile Include="Database\DatabaseConnection.cs" />
+    <Compile Include="Database\DatabaseID.cs" />
+    <Compile Include="DataConverter\DungeonConverter.cs" />
+    <Compile Include="DataConverter\Dungeons\V1\Dungeon.cs" />
+    <Compile Include="DataConverter\Dungeons\V1\DungeonManager.cs" />
+    <Compile Include="DataConverter\Dungeons\V1\DungeonMap.cs" />
+    <Compile Include="DataConverter\Dungeons\V2\Dungeon.cs" />
+    <Compile Include="DataConverter\Dungeons\V2\DungeonManager.cs" />
+    <Compile Include="DataConverter\Dungeons\V2\RandomDungeonMap.cs" />
+    <Compile Include="DataConverter\Dungeons\V2\StandardDungeonMap.cs" />
+    <Compile Include="DataConverter\ItemConverter.cs" />
+    <Compile Include="DataConverter\Items\V1\Item.cs" />
+    <Compile Include="DataConverter\Items\V1\ItemManager.cs" />
+    <Compile Include="DataConverter\Items\V2\Item.cs" />
+    <Compile Include="DataConverter\Items\V2\ItemManager.cs" />
+    <Compile Include="DataConverter\MoveConverter.cs" />
+    <Compile Include="DataConverter\Moves\V1\Move.cs" />
+    <Compile Include="DataConverter\Moves\V1\MoveManager.cs" />
+    <Compile Include="DataConverter\Moves\V2\Move.cs" />
+    <Compile Include="DataConverter\Moves\V2\MoveManager.cs" />
+    <Compile Include="DataConverter\Moves\V3\Move.cs" />
+    <Compile Include="DataConverter\Moves\V3\MoveManager.cs" />
+    <Compile Include="DataConverter\Moves\V4\Move.cs" />
+    <Compile Include="DataConverter\Moves\V4\MoveAnimation.cs" />
+    <Compile Include="DataConverter\Moves\V4\MoveManager.cs" />
+    <Compile Include="DataConverter\Moves\V5\Move.cs" />
+    <Compile Include="DataConverter\Moves\V5\MoveAnimation.cs" />
+    <Compile Include="DataConverter\Moves\V5\MoveManager.cs" />
+    <Compile Include="DataConverter\NpcConverter.cs" />
+    <Compile Include="DataConverter\Npcs\V3\Npc.cs" />
+    <Compile Include="DataConverter\Npcs\V3\NpcDrop.cs" />
+    <Compile Include="DataConverter\Npcs\V3\NpcManager.cs" />
+    <Compile Include="DataConverter\Npcs\V4\Npc.cs" />
+    <Compile Include="DataConverter\Npcs\V4\NpcDrop.cs" />
+    <Compile Include="DataConverter\Npcs\V4\NpcManager.cs" />
+    <Compile Include="DataConverter\Npcs\V5\Npc.cs" />
+    <Compile Include="DataConverter\Npcs\V5\NpcDrop.cs" />
+    <Compile Include="DataConverter\Npcs\V5\NpcManager.cs" />
+    <Compile Include="DataConverter\Npcs\V6\Npc.cs" />
+    <Compile Include="DataConverter\Npcs\V6\NpcDrop.cs" />
+    <Compile Include="DataConverter\Npcs\V6\NpcManager.cs" />
+    <Compile Include="DataConverter\Npcs\V7\Npc.cs" />
+    <Compile Include="DataConverter\Npcs\V7\NpcDrop.cs" />
+    <Compile Include="DataConverter\Npcs\V7\NpcManager.cs" />
+    <Compile Include="DataConverter\RDungeonConverter.cs" />
+    <Compile Include="DataConverter\RDungeons\V1\RDungeon.cs" />
+    <Compile Include="DataConverter\RDungeons\V1\RDungeonFloor.cs" />
+    <Compile Include="DataConverter\RDungeons\V1\RDungeonManager.cs" />
+    <Compile Include="DataConverter\RDungeons\V2\RDungeon.cs" />
+    <Compile Include="DataConverter\RDungeons\V2\RDungeonFloor.cs" />
+    <Compile Include="DataConverter\RDungeons\V2\RDungeonManager.cs" />
+    <Compile Include="DataConverter\RDungeons\V3\RDungeon.cs" />
+    <Compile Include="DataConverter\RDungeons\V3\RDungeonFloor.cs" />
+    <Compile Include="DataConverter\RDungeons\V3\RDungeonItem.cs" />
+    <Compile Include="DataConverter\RDungeons\V3\RDungeonManager.cs" />
+    <Compile Include="DataConverter\RDungeons\V3\RDungeonNpc.cs" />
+    <Compile Include="DataConverter\RDungeons\V4\RDungeon.cs" />
+    <Compile Include="DataConverter\RDungeons\V4\RDungeonFloor.cs" />
+    <Compile Include="DataConverter\RDungeons\V4\RDungeonItem.cs" />
+    <Compile Include="DataConverter\RDungeons\V4\RDungeonManager.cs" />
+    <Compile Include="DataConverter\RDungeons\V4\RDungeonTrap.cs" />
+    <Compile Include="DataConverter\ShopConverter.cs" />
+    <Compile Include="DataConverter\Shops\V1\Shop.cs" />
+    <Compile Include="DataConverter\Shops\V1\ShopItem.cs" />
+    <Compile Include="DataConverter\Shops\V1\ShopManager.cs" />
+    <Compile Include="DataConverter\Shops\V1\ShopSection.cs" />
+    <Compile Include="DataConverter\Shops\V2\Shop.cs" />
+    <Compile Include="DataConverter\Shops\V2\ShopItem.cs" />
+    <Compile Include="DataConverter\Shops\V2\ShopManager.cs" />
+    <Compile Include="DataConverter\Stories\V2\Story.cs" />
+    <Compile Include="DataConverter\Stories\V2\StoryManager.cs" />
+    <Compile Include="DataConverter\Stories\V2\StorySegment.cs" />
+    <Compile Include="DataConverter\Stories\V3\Story.cs" />
+    <Compile Include="DataConverter\Stories\V3\StoryManager.cs" />
+    <Compile Include="DataConverter\Stories\V3\StorySegment.cs" />
+    <Compile Include="DataConverter\StoryConverter.cs" />
+    <Compile Include="Debug\CodeTimer.cs" />
+    <Compile Include="Debug\InfiniteLoopDetector.cs" />
+    <Compile Include="Debug\ThreadCPUWatcher.cs" />
+    <Compile Include="Dungeons\Dungeon.cs" />
+    <Compile Include="Dungeons\DungeonCollection.cs" />
+    <Compile Include="Dungeons\DungeonManagerBase.cs" />
+    <Compile Include="Dungeons\IDungeonMap.cs" />
+    <Compile Include="Dungeons\RandomDungeonMap.cs" />
+    <Compile Include="Dungeons\StandardDungeonMap.cs" />
+    <Compile Include="Email\Email.cs" />
+    <Compile Include="Events\Player\TriggerEvents\StepCounterTriggerEvent.cs" />
+    <Compile Include="Events\Player\TriggerEvents\SteppedOnTileTriggerEvent.cs" />
+    <Compile Include="Events\Player\TriggerEvents\ITriggerEvent.cs" />
+    <Compile Include="Events\Player\TriggerEvents\MapLoadTriggerEvent.cs" />
+    <Compile Include="Events\Player\TriggerEvents\TriggerEventHelper.cs" />
+    <Compile Include="Events\World\ClientKeepAliveTimedEvent.cs" />
+    <Compile Include="Events\World\MapGCTimedEvent.cs" />
+    <Compile Include="Events\World\StatisticSaverTimedEvent.cs" />
+    <Compile Include="Events\World\TimedEventCollection.cs" />
+    <Compile Include="Evolutions\Evolution.cs" />
+    <Compile Include="Evolutions\EvolutionBranch.cs" />
+    <Compile Include="Evolutions\EvolutionCollection.cs" />
+    <Compile Include="Evolutions\EvolutionManagerBase.cs" />
+    <Compile Include="Guilds\GuildManager.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\ItemCollection.cs" />
+    <Compile Include="Items\ItemManager.cs" />
+    <Compile Include="Logging\ChatLogger.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Maps\ActiveItemCollection.cs" />
+    <Compile Include="Maps\ActiveNpcCollection.cs" />
+    <Compile Include="Maps\MapBase.cs" />
+    <Compile Include="Maps\MapItem.cs" />
+    <Compile Include="Maps\MapNpcBase.cs" />
+    <Compile Include="Maps\MapNpcPreset.cs" />
+    <Compile Include="Maps\MapNpcPresetCollection.cs" />
+    <Compile Include="Maps\MapPlayer.cs" />
+    <Compile Include="Maps\MapPlayersCollection.cs" />
+    <Compile Include="Maps\MapStatus.cs" />
+    <Compile Include="Maps\MapStatusCollection.cs" />
+    <Compile Include="Maps\SeamlessWorldHelper.cs" />
+    <Compile Include="Maps\Tile.cs" />
+    <Compile Include="Maps\TileCollection.cs" />
+    <Compile Include="Maps\Void.cs" />
+    <Compile Include="Maps\WarpDestination.cs" />
+    <Compile Include="Moves\Move.cs" />
+    <Compile Include="Moves\MoveAnimation.cs" />
+    <Compile Include="Moves\MoveCollection.cs" />
+    <Compile Include="Moves\MoveManager.cs" />
+    <Compile Include="Network\PacketBuilder.cs" />
+    <Compile Include="Network\PacketHitList.cs" />
+    <Compile Include="Network\PacketHitListCache.cs" />
+    <Compile Include="Network\PacketList.cs" />
+    <Compile Include="Network\PacketHitListTargets.cs" />
+    <Compile Include="Npcs\Npc.cs" />
+    <Compile Include="Npcs\NpcCollection.cs" />
+    <Compile Include="Npcs\NpcDrop.cs" />
+    <Compile Include="Npcs\NpcManagerBase.cs" />
+    <Compile Include="Players\AvailableExpKitModule.cs" />
+    <Compile Include="Players\AvailableExpKitModuleCollection.cs" />
+    <Compile Include="Players\CharacterInformation.cs" />
+    <Compile Include="Players\Inventory.cs" />
+    <Compile Include="Players\InventoryItem.cs" />
+    <Compile Include="Players\Mail\IMail.cs" />
+    <Compile Include="Players\Mail\Mailbox.cs" />
+    <Compile Include="Players\Mail\MailCollection.cs" />
+    <Compile Include="Players\Mail\Mailer.cs" />
+    <Compile Include="Players\Mail\MailSendResult.cs" />
+    <Compile Include="Players\Mail\MailType.cs" />
+    <Compile Include="Players\Mail\MessageMail.cs" />
+    <Compile Include="Players\PlayerDB.cs" />
+    <Compile Include="Players\PlayerDB.Data.cs" />
+    <Compile Include="Players\PlayerDB.Inventory.cs" />
+    <Compile Include="Players\PlayerManagerDB.cs" />
+    <Compile Include="Players\RecruitBase.cs" />
+    <Compile Include="Players\RecruitDB.cs" />
+    <Compile Include="Players\RecruitMove.cs" />
+    <Compile Include="Players\SeenCharacter.cs" />
+    <Compile Include="Players\StoryHelper.cs" />
+    <Compile Include="Pokedex\LevelUpMove.cs" />
+    <Compile Include="Pokedex\Pokedex.cs" />
+    <Compile Include="Pokedex\Pokemon.cs" />
+    <Compile Include="Pokedex\PokemonForm.cs" />
+    <Compile Include="Pokedex\QuoteType.cs" />
+    <Compile Include="Processing\IEvent.cs" />
+    <Compile Include="Processing\PlayerEvent.cs" />
+    <Compile Include="Processing\PlayerEventQueue.cs" />
+    <Compile Include="Processing\PlayerEventThread.cs" />
+    <Compile Include="RDungeons\RDungeonItem.cs" />
+    <Compile Include="RDungeons\RDungeonRoom.cs" />
+    <Compile Include="Maps\MapCloner.cs" />
+    <Compile Include="Events\Player\TriggerEvents\TriggerEventAction.cs" />
+    <Compile Include="Events\Player\TriggerEvents\TriggerEventTrigger.cs" />
+    <Compile Include="Events\World\ITimedEvent.cs" />
+    <Compile Include="Events\World\DayCycleTimedEvent.cs" />
+    <Compile Include="Events\World\TimedEventManager.cs" />
+    <Compile Include="Combat\BattleResult.cs" />
+    <Compile Include="Combat\BattleSetup.cs" />
+    <Compile Include="Combat\DamageCalculator.cs" />
+    <Compile Include="Combat\MoveProcessor.cs" />
+    <Compile Include="CommandHandler.cs" />
+    <Compile Include="CustomMenus\CustomMenu.cs" />
+    <Compile Include="CustomMenus\CustomMenuManager.cs" />
+    <Compile Include="CustomMenus\MenuLabel.cs" />
+    <Compile Include="CustomMenus\MenuPicture.cs" />
+    <Compile Include="CustomMenus\MenuTextBox.cs" />
+    <Compile Include="Dungeons\DungeonManager.cs" />
+    <Compile Include="Evolutions\EvolutionManager.cs" />
+    <Compile Include="Exp\ExpCollection.cs" />
+    <Compile Include="Exp\ExpManager.cs" />
+    <Compile Include="Forms\LoadingUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoadingUI.Designer.cs">
+      <DependentUpon>LoadingUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainUI.Designer.cs">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Globals.cs" />
+    <Compile Include="Maps\House.cs" />
+    <Compile Include="Maps\IMap.cs" />
+    <Compile Include="Maps\InstancedMap.cs" />
+    <Compile Include="Maps\BasicMap.cs" />
+    <Compile Include="Maps\Map.cs" />
+    <Compile Include="Maps\MapManager.cs" />
+    <Compile Include="Maps\MapNpc.cs" />
+    <Compile Include="Maps\RDungeonMap.cs" />
+    <Compile Include="Missions\GoalPoint.cs" />
+    <Compile Include="Missions\MissionManager.cs" />
+    <Compile Include="Network\ClientManager.cs" />
+    <Compile Include="Network\NetworkManager.cs" />
+    <Compile Include="Network\TcpClientIdentifier.cs" />
+    <Compile Include="Network\TcpClientIDGenerator.cs" />
+    <Compile Include="Npcs\NpcManager.cs" />
+    <Compile Include="Combat\BattleProcessor.cs" />
+    <Compile Include="AI\MovementProcessor.cs" />
+    <Compile Include="Combat\ICharacter.cs" />
+    <Compile Include="Players\IExPlayer.cs" />
+    <Compile Include="Players\Parties\PartyMemberCollection.cs" />
+    <Compile Include="Players\Parties\PartyManager.cs" />
+    <Compile Include="Players\Parties\PartyMember.cs" />
+    <Compile Include="Players\Player.cs" />
+    <Compile Include="Players\PlayerID.cs" />
+    <Compile Include="Players\PlayerManager.cs" />
+    <Compile Include="Players\Parties\Party.cs" />
+    <Compile Include="Players\PlayerPet.cs" />
+    <Compile Include="Players\Ranks.cs" />
+    <Compile Include="Players\Recruit.cs" />
+    <Compile Include="Players\WonderMailTasks.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RDungeons\RDungeon.cs" />
+    <Compile Include="RDungeons\RDungeonCollection.cs" />
+    <Compile Include="RDungeons\RDungeonFloor.cs" />
+    <Compile Include="RDungeons\RDungeonFloorGen.cs" />
+    <Compile Include="RDungeons\RDungeonManager.cs" />
+    <Compile Include="RDungeons\RDungeonTrap.cs" />
+    <Compile Include="Scripting\Editor\EditorHelper.cs" />
+    <Compile Include="ServerLoader.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Shops\Shop.cs" />
+    <Compile Include="Shops\ShopCollection.cs" />
+    <Compile Include="Shops\ShopItem.cs" />
+    <Compile Include="Shops\ShopManager.cs" />
+    <Compile Include="Shops\ShopManagerBase.cs" />
+    <Compile Include="Statistics\PacketStatistic.cs" />
+    <Compile Include="Statistics\PacketStatistics.cs" />
+    <Compile Include="Statistics\PlayerStatistics.cs" />
+    <Compile Include="Statistics\PerformanceStatistics.cs" />
+    <Compile Include="Stories\Story.cs" />
+    <Compile Include="Stories\StoryBuilder.cs" />
+    <Compile Include="Stories\StoryBuilderSegment.cs" />
+    <Compile Include="Stories\StoryCollection.cs" />
+    <Compile Include="Stories\StoryManager.cs" />
+    <Compile Include="Network\Client.cs" />
+    <Compile Include="Network\MessageProcessor.cs" />
+    <Compile Include="Network\Messenger.cs" />
+    <Compile Include="Network\PacketModifiers.cs" />
+    <Compile Include="Stories\StoryManagerBase.cs" />
+    <Compile Include="Stories\StoryPlaybackCache.cs" />
+    <Compile Include="Stories\StorySegment.cs" />
+    <Compile Include="ThreadManager.cs" />
+    <Compile Include="Tournaments\MatchUp.cs" />
+    <Compile Include="Tournaments\MatchUpRules.cs" />
+    <Compile Include="Tournaments\Tournament.cs" />
+    <Compile Include="Tournaments\TournamentCollection.cs" />
+    <Compile Include="Tournaments\TournamentManager.cs" />
+    <Compile Include="Tournaments\TournamentMember.cs" />
+    <Compile Include="Tournaments\TournamentMemberCollection.cs" />
+    <Compile Include="Tournaments\TournamentRules.cs" />
+    <Compile Include="WonderMails\Generator.cs" />
+    <Compile Include="WonderMails\MissionBoard.cs" />
+    <Compile Include="WonderMails\MissionClientData.cs" />
+    <Compile Include="WonderMails\MissionEnemyData.cs" />
+    <Compile Include="WonderMails\MissionPool.cs" />
+    <Compile Include="WonderMails\MissionPoolCollection.cs" />
+    <Compile Include="WonderMails\MissionRewardData.cs" />
+    <Compile Include="WonderMails\WonderMail.cs" />
+    <Compile Include="WonderMails\WonderMailJob.cs" />
+    <Compile Include="WonderMails\WonderMailManager.cs" />
+    <EmbeddedResource Include="Forms\LoadingUI.resx">
+      <DependentUpon>LoadingUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainUI.resx">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{0F397789-1719-47E8-B83E-45B721981B73}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Emoticons\Emoticons.csproj">
+      <Project>{72F43913-AA6D-41F1-AEEF-C9E6DD914A65}</Project>
+      <Name>Emoticons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Exceptions\Exceptions.csproj">
+      <Project>{7F001974-C37D-46F0-A2B3-73C9B79C4DC1}</Project>
+      <Name>Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IO\IO.csproj">
+      <Project>{6D9BB0A3-AFC1-402B-A596-E2FA03C6C4B5}</Project>
+      <Name>IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RDungeons\RDungeons.csproj">
+      <Project>{B27512C4-9D86-4E3B-ADC0-E00A43193C22}</Project>
+      <Name>RDungeons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Scripting\Scripting.csproj">
+      <Project>{D40E045A-02AB-4065-99A7-5F5EF85031D2}</Project>
+      <Name>Scripting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security\Security.csproj">
+      <Project>{55600CBF-BD1F-4319-99C6-98A3B3E19073}</Project>
+      <Name>Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if /I "$(ConfigurationName)" == "ReleaseX" $(SolutionDir)..\Tools\xcopy\xcopy.exe /srcfile "$(TargetPath)" /remoteip 46.4.166.141 /remoteport 5901</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+	<Settings>
+		<GamePort>4001</GamePort>
+		<DatabaseIP>localhost</DatabaseIP>
+		<DatabasePort>3306</DatabasePort>
+		<DatabaseUser>UsernameHere</DatabaseUser>
+		<DatabasePassword>.PasswordHere</DatabasePassword>
+	</Settings>
+</Data>
